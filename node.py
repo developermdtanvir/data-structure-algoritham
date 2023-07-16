@@ -1,3 +1,10 @@
+"""
+
+# Datastcture for the node list
+
+
+"""
+
 class Node: 
     def __init__(self,value):
         self.next = None
@@ -41,6 +48,10 @@ class DubbleLinkList:
                 self.__remove_node(node)
                 break
             node = node.next
+
+    def remove__first(self):
+        if self.tail is not None:
+            self.__remove_node(self.head)
         
 
 
@@ -60,10 +71,10 @@ my_list.add(5)
 my_list.add(5)
 my_list.add(5)
 my_list.add(5)
-my_list.add(2)
 my_list.remove(5)
 my_list.remove(5)
 
+my_list.remove__first()
 print(my_list)
 
 print(my_list.size)
