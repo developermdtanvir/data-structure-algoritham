@@ -1,20 +1,3 @@
-print('Hello world')
-
-class MyClass:
-    x = 20
-
-
-p = MyClass()
-
-class Person: 
-    def __init__(self,name,age):
-        self.name = name
-        self.age = age
-
-        getattr(self, 'name', None)
-p1 = Person('Tanvir Hossain',20)
-
-
 class Node: 
     def __init__(self,value):
         self.next = None
@@ -33,10 +16,34 @@ class DubbleLinkList:
             self.tail = node 
             self.size += 1
         else:
-            self.head.next = node
+            self.tail.next = node
             node.prev = self.head
             self.tail = node
             self.size += 1
+    
+    def __remove_node(self,node):
+        if node.prev is None:
+            self.head = node.next
+        else:
+            node.prev.next = node.next
+        
+        if node.next is None:
+            self.tail = node.prev
+        else:
+            node.next.prev = node.prev
+        
+        self.size -= 1
+
+    def remove(self,value):
+        node = self.head
+        while node is not None: 
+            if node.val == value:
+                self.__remove_node(node)
+                break
+            node = node.next
+        
+
+
     def __str__(self):
         vals = []
         node = self.head
@@ -49,6 +56,14 @@ class DubbleLinkList:
 my_list = DubbleLinkList()
 my_list.add(1)
 my_list.add(5)
+my_list.add(5)
+my_list.add(5)
+my_list.add(5)
+my_list.add(5)
 my_list.add(2)
+my_list.remove(5)
+my_list.remove(5)
 
 print(my_list)
+
+print(my_list.size)
